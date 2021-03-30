@@ -3,16 +3,20 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <ctime>
 
 using namespace std;
 
 int main()
 {
-    string test;
+    time_t now = time(0);
+    tm *ltm = localtime(&now);
+    string test, cdate;
+    cdate = to_string(1900 + ltm->tm_year) + "-" + to_string(1 + ltm->tm_mon) + "-" + to_string(ltm->tm_mday) + "-" + to_string(ltm->tm_hour) + ":" + to_string(ltm->tm_min);
     vector<string> temp;
     ifstream infile;
     ofstream outfile;
-    outfile.open("output.csv");
+    outfile.open("output/Ingram-" + cdate + ".csv");
     infile.open("input.csv");
     outfile << "SKU,VPN,Quantity\n";
     while (getline(infile, test))
