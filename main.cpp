@@ -22,7 +22,7 @@ int main()
     while (getline(infile, test))
     {
         temp.clear();
-        char delimiter = ',';
+        char delimiter = '\t';
         size_t pos = 0;
         int count = 0;
         string token;
